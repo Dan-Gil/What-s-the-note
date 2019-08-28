@@ -75,6 +75,15 @@ function update() {
   drawNotes();
 }
 
+function handleButtonClick(e) {
+  keyPressed(e.target.dataset.key);
+}
+
+function playAudio(url) {
+  let audio = new Audio(url);
+  audio.play();
+}
+
 const board = new Board();
 
 window.addEventListener('load', update);
@@ -86,10 +95,6 @@ document.querySelectorAll('button').forEach(element => {
 window.addEventListener('keydown', e => {
   keyPressed(e.key);
 });
-
-function handleButtonClick(e) {
-  keyPressed(e.target.dataset.key);
-}
 
 function keyPressed(key) {
   switch (key) {
