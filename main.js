@@ -163,8 +163,8 @@ function keyPressed(key) {
   }
   console.log(key);
 }
-function start() {}
-window.addEventListener('load', update);
+
+//window.addEventListener('load', update);
 window.addEventListener('keydown', e => {
   keyPressed(e.key);
 });
@@ -180,7 +180,9 @@ addEventListener('click', e => {
 document.getElementsByClassName('start-game-button')[0].onclick = function() {
   //hace un array de elementos que contengan esa clase y selecciono el primero
   document.querySelector('.start-game-button').style.display = 'none';
-  start();
+  document.querySelector('.front-page').style.display = 'none';
+
+  update();
   //  document.querySelector('#staff').style.display = 'show';
 };
 

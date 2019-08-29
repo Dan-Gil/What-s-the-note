@@ -46,8 +46,8 @@ body {
 
 canvas {
   border-radius: 15px;
-  border: 1px solid white;
-  box-shadow: 0 0 1em white;
+  border: 1px solid rgb(79, 12, 141);
+  box-shadow: 0 0 1em rgb(60, 30, 95);
 }
 button {
   display: inline-block;
