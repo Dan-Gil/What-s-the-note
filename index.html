@@ -5,32 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>What's the note?</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div id="main">
+    <header>
       <div>
-        <canvas id="staff" width="900" height="400"></canvas>
+        <h1>What's the Note?</h1>
       </div>
 
-      <div id="button-container" width="900" height="200">
-        <button class="button-red" data-key="c" onclick="playAudio('Sounds/316898__jaz-the-man-2__do.wav')">C</button>
-        <button class="button-orange" data-key="d" onclick="playAudio('Sounds/316908__jaz-the-man-2__re.wav')">
-          D
-        </button>
-        <button class="button-blue" data-key="e" onclick="playAudio('Sounds/316906__jaz-the-man-2__mi.wav')">E</button>
-        <button class="button-purple" data-key="f" onclick="playAudio('Sounds/316904__jaz-the-man-2__fa.wav')">
-          F
-        </button>
-        <button class="button-green" data-key="g" onclick="playAudio('Sounds/316912__jaz-the-man-2__sol.wav')">
-          G
-        </button>
-        <button class="button-pink" data-key="a" onclick="playAudio('Sounds/316902__jaz-the-man-2__la.wav')">A</button>
-        <button class="button-yellow" data-key="b" onclick="playAudio('Sounds/316913__jaz-the-man-2__si.mp3')">
-          B
-        </button>
+      <div class="my-score">
+        <h2>Score:</h2>
+        <span id="score">0</span>
       </div>
+    </header>
+    <div id="main">
+      <canvas id="staff" width="900" height="400"> </canvas>
     </div>
+
+    <div id="button-container" width="900" height="200">
+      <button class="button-red" data-key="c">C</button>
+      <button class="button-orange" data-key="d">
+        D
+      </button>
+      <button class="button-blue" data-key="e">E</button>
+      <button class="button-purple" data-key="f">
+        F
+      </button>
+      <button class="button-green" data-key="g">
+        G
+      </button>
+      <button class="button-pink" data-key="a">A</button>
+      <button class="button-yellow" data-key="b">
+        B
+      </button>
+    </div>
+
+    <div id="start-button">
+      <button class="start-game-button">START GAME</button>
+    </div>
+
+    <audio src="./Sounds/do.wav" id="do"></audio>
+    <audio src="./Sounds/re.wav" id="re"></audio>
+    <audio src="./Sounds/mi.wav" id="mi"></audio>
+    <audio src="./Sounds/fa.wav" id="fa"></audio>
+    <audio src="./Sounds/sol.wav" id="sol"></audio>
+    <audio src="./Sounds/la.wav" id="la"></audio>
+    <audio src="./Sounds/si.mp3" id="si"></audio>
 
     <script src="./main.js"></script>
   </body>
