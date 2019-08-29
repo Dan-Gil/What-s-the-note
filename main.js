@@ -129,7 +129,7 @@ function stop() {
   interval = null; // se reasigna el valor de interval
 }
 function keyPressed(key) {
-  console.log(key, getCurrent());
+  // console.log(key, getCurrent());
   if (key !== getCurrent()) {
     return;
   }
@@ -161,7 +161,7 @@ function keyPressed(key) {
     default:
       break;
   }
-  console.log(key);
+  // console.log(key);
 }
 
 //window.addEventListener('load', update);

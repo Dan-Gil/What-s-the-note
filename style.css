@@ -5,7 +5,7 @@
 }
 @font-face {
   font-family: Metdemo;
-  src: local('./fonts/Metdemo.ttf');
+  src: url('./fonts/Metdemo.ttf');
 }
 
 h1 {
