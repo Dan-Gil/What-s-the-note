@@ -48,6 +48,7 @@ canvas {
   border-radius: 15px;
   border: 1px solid rgb(79, 12, 141);
   box-shadow: 0 0 1em rgb(60, 30, 95);
+  display: none;
 }
 button {
   display: inline-block;
@@ -137,4 +138,19 @@ header {
   box-shadow: 0 0 1em white;
   font-family: 'Anton', sans-serif;
   letter-spacing: 2px;
+}
+
+#start {
+  height: 402px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#win {
+  height: 402px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }

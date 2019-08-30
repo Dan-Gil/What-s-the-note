@@ -2,10 +2,11 @@ const canvas = document.getElementById('staff');
 const ctx = canvas.getContext('2d');
 let notes = [];
 let frames = 0;
-let current;
 let ticks = 0;
 let score = 0;
 let interval;
+let animation;
+let latestScore = 0;
 //let board;
 
 class Board {
@@ -15,7 +16,7 @@ class Board {
     this.width = canvas.width;
     this.height = canvas.height;
     this.img = new Image();
-    this.img.src = './img/staff.png';
+    this.img.src = './img/staff2.png';
     this.img.onload = () => {
       this.draw();
     };
@@ -76,10 +77,10 @@ function drawNotes() {
 }
 
 function update() {
-  window.requestAnimationFrame(update);
   //se puede settear un time para llamar requestAnim.. con tiempo más corto
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   frames++;
+  latestScore = score;
   //console.log(notes);
   board.draw();
   generateNotes();
@@ -88,6 +89,17 @@ function update() {
   // drawEasySong();
   deleteNotes();
   drawScore();
+  if (score >= 1000) {
+    cancelAnimationFrame(animation);
+    canvas.style.display = 'none';
+    document.getElementById('start').style.display = 'none';
+    document.getElementById('win').style.display = 'block';
+    score = 0;
+    frames = 0;
+    notes = [];
+    return;
+  }
+  animation = window.requestAnimationFrame(update);
 }
 
 function getCurrent() {
@@ -116,7 +128,7 @@ function playAudio(id) {
 
 function drawScore() {
   let elmnt = document.getElementById('score');
-  elmnt.innerText = score;
+  elmnt.innerText = latestScore;
   return;
   // ctx.save();
   // ctx.font = '24px Courier';
@@ -130,7 +142,8 @@ function stop() {
 }
 function keyPressed(key) {
   // console.log(key, getCurrent());
-  if (key !== getCurrent()) {
+  const current = getCurrent();
+  if (key !== current) {
     return;
   }
   score += 10;
@@ -169,7 +182,7 @@ window.addEventListener('keydown', e => {
   keyPressed(e.key);
 });
 
-document.querySelectorAll('button').forEach(element => {
+document.querySelectorAll('button[class^="button-"]').forEach(element => {
   element.addEventListener('click', handleButtonClick);
 });
 
@@ -177,14 +190,24 @@ addEventListener('click', e => {
   console.log(e);
 });
 
-document.getElementsByClassName('start-game-button')[0].onclick = function() {
+/* document.getElementsByClassName('start-game-button')[0].onclick = function() {
   //hace un array de elementos que contengan esa clase y selecciono el primero
   document.querySelector('.start-game-button').style.display = 'none';
   document.querySelector('.front-page').style.display = 'none';
 
   update();
   //  document.querySelector('#staff').style.display = 'show';
-};
+};*/
+
+document.querySelectorAll('.start-game-button').forEach(e => {
+  e.addEventListener('click', () => {
+    canvas.style.display = 'block';
+    document.getElementById('start').style.display = 'none';
+    document.getElementById('win').style.display = 'none';
+    latestScore = 0;
+    update();
+  });
+});
 
 /*
 function easySong1() {
