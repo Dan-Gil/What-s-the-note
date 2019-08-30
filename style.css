@@ -148,7 +148,7 @@ header {
 }
 
 #win {
-  height: 402px;
+  height: 360px;
   display: flex;
   justify-content: center;
   align-items: center;

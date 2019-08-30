@@ -86,7 +86,7 @@ function update() {
   // drawEasySong();
   deleteNotes();
   drawScore();
-  if (score >= 10) {
+  if (score >= 200) {
     cancelAnimationFrame(animation);
     canvas.style.display = 'none';
     document.getElementById('start').style.display = 'none';
@@ -101,7 +101,7 @@ function update() {
 
 function getCurrent() {
   let [note] = notes;
-  if (note && note.x < 230) {
+  if (note && note.x < 287) {
     return note.key;
   }
 }
@@ -127,17 +127,13 @@ function drawScore() {
   let elmnt = document.getElementById('score');
   elmnt.innerText = latestScore;
   return;
-  // ctx.save();
-  // ctx.font = '24px Courier';
-  // ctx.fillStyle = 'white';
-  // ctx.fillText(score, canvas.width / 2, 50);
-  // ctx.restore();
 }
 
 function keyPressed(key) {
   // console.log(key, getCurrent());
   const current = getCurrent();
   if (key !== current) {
+    playAudio('wrong');
     return;
   }
   score += 10;
