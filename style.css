@@ -153,4 +153,10 @@ header {
   justify-content: center;
   align-items: center;
   display: none;
+  margin: 20px;
+  font-family: 'Anton', sans-serif;
+  color: #fff;
+  text-shadow: rgb(193, 96, 255) 3px 3px 4px;
+  text-align: center;
+  font-size: 60px;
 }

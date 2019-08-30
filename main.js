@@ -2,9 +2,7 @@ const canvas = document.getElementById('staff');
 const ctx = canvas.getContext('2d');
 let notes = [];
 let frames = 0;
-let ticks = 0;
 let score = 0;
-let interval;
 let animation;
 let latestScore = 0;
 //let board;
@@ -36,7 +34,6 @@ class Note {
   }
   draw() {
     this.x -= 2;
-    //ctx.drawImage(this.quarterNote, this.x, this.y, this.width, this.height);
     ctx.save();
     ctx.font = '120px Metdemo';
     ctx.fillStyle = this.color;
@@ -89,7 +86,7 @@ function update() {
   // drawEasySong();
   deleteNotes();
   drawScore();
-  if (score >= 1000) {
+  if (score >= 10) {
     cancelAnimationFrame(animation);
     canvas.style.display = 'none';
     document.getElementById('start').style.display = 'none';
@@ -136,10 +133,7 @@ function drawScore() {
   // ctx.fillText(score, canvas.width / 2, 50);
   // ctx.restore();
 }
-function stop() {
-  clearInterval(interval); // detiene el intervalo
-  interval = null; // se reasigna el valor de interval
-}
+
 function keyPressed(key) {
   // console.log(key, getCurrent());
   const current = getCurrent();
@@ -169,8 +163,6 @@ function keyPressed(key) {
     case 'b':
       playAudio('si');
       break;
-    case 81:
-      stop();
     default:
       break;
   }
@@ -205,6 +197,9 @@ document.querySelectorAll('.start-game-button').forEach(e => {
     document.getElementById('start').style.display = 'none';
     document.getElementById('win').style.display = 'none';
     latestScore = 0;
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.volume = 0.1;
+    bgMusic.play();
     update();
   });
 });
